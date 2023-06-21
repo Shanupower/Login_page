@@ -1,0 +1,26 @@
+<!-- view_posts.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View All Posts</title>
+</head>
+<body>
+    <h1>All Posts</h1>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Author</th>
+            <th>Tags</th>
+        </tr>
+        {% for post in posts %}
+        <tr>
+            <td>{{ post.title }}</td>
+            <td>{{ post.content }}</td>
+            <td>{{ post.author }}</td>
+            <td>{{ post.tags }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
