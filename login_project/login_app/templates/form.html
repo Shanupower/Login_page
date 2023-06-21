@@ -1,18 +1,125 @@
 <!-- form.html -->
-<form method="post" action="{% url 'save_post' %}">
-    {% csrf_token %}
-    <label for="title">Title:</label>
-    <input type="text" name="title" id="title" required>
-  
-    <label for="content">Content:</label>
-    <textarea name="content" id="content" required></textarea>
-  
-    <label for="author">Author:</label>
-    <input type="text" name="author" id="author" required>
-  
-    <label for="tags">Tags:</label>
-    <input type="text" name="tags" id="tags" required>
-  
-    <input type="submit" value="Submit">
-  </form>
-  
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* CSS styles for the form */
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+    
+    .container {
+      width: 400px;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    
+    input[type="text"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    textarea {
+      height: 120px;
+      resize: vertical;
+    }
+    
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Add News</h2>
+    
+    <form method="post" action="{% url 'save_post' %}"></form>
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required>
+      
+      <label for="content">Content:</label>
+      <textarea id="content" name="content" required></textarea>
+      
+      <label for="author">Author:</label>
+      <input type="text" id="author" name="author" required>
+      
+      <label for="tags">Tags:</label>
+      <input type="text" id="tags" name="tags" required>
+      
+      <label for="core-categories">Core Categories:</label>
+      <select id="core-categories" name="core-categories" required>
+        <option value="">Select Category</option>
+        <option value="World">World</option>
+        <option value="Politics">Politics</option>
+        <option value="Business and Economy">Business and Economy</option>
+        <option value="Technology">Technology</option>
+        <option value="Impacts">Impacts</option>
+        <option value="Science and Environment">Science and Environment</option>
+        <option value="Health and Wellness">Health and Wellness</option>
+        <option value="Arts and Culture">Arts and Culture</option>
+        <option value="Opinion and Analysis">Opinion and Analysis</option>
+        <option value="Sports">Sports</option>
+        <option value="Future and Emerging Technologies">Future and Emerging Technologies</option>
+        <option value="Social Impact">Social Impact</option>
+        <option value="Education and Lifelong Learning">Education and Lifelong Learning</option>
+        <option value="Personal Finance and Investing">Personal Finance and Investing</option>
+        <option value="Global Governance and Diplomacy">Global Governance and Diplomacy</option>
+        <option value="Civic Tech and Digital Democracy">Civic Tech and Digital Democracy</option>
+        <option value="Data Privacy and Ethics">Data Privacy and Ethics</option>
+        <option value="Indigenous Rights and Cultures">Indigenous Rights and Cultures</option>
+        <option value="Mental Health and Well-being">Mental Health and Well-being</option>
+        <option value="Emerging Markets and Development">Emerging Markets and Development</option>
+        <option value="Humanitarian Innovation">Humanitarian Innovation</option>
+        <option value="Alternative Education Models">Alternative Education Models</option>
+        <option value="Circular Economy">Circular Economy</option>
+        <option value="Impactful Philanthropy">Impactful Philanthropy</option>
+        <option value="Biohacking and Transhumanism">Biohacking and Transhumanism</option>
+      </select>
+      
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+</body>
+</html>
