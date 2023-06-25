@@ -10,3 +10,4 @@ class Post(models.Model):
     tags = models.CharField(max_length=255)
     core_categories = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
+    img = models.ImageField(upload_to='images/')
