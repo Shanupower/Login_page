@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
-from .forms import UserForm
+from .forms import UserForm, NewsForm
 from .models import UserModel
-from .models import PostModel
+from .models import NewsModel
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import PostModel
+from .models import NewsModel
 import os
 import pymongo
 from django.conf import settings
@@ -78,7 +78,7 @@ def login_view(request):
     return render(request, 'login.html', {'form': form})
 
 def view_posts(request):
-    posts = PostModel.objects.all()
+    posts = NewsModel.objects.all()
     return render(request, 'viewposts.html', {'posts': posts})
     
 def login_submit(request):
@@ -141,6 +141,17 @@ def register_user(request):
             return JsonResponse({"result": "success"}, safe=False)
         else:
             return render(request, "success.html")
+        
+@csrf_exempt
+def add_news(request):
+    if request.method == 'POST':
+        form = NewsForm(request.POST or None)
+        if form.is_valid():
+            print("here")
+            form.save()
+            return JsonResponse({"result": "success"}, safe=False)
+        else:
+            return JsonResponse({"result": "failed to upload"}, safe=False)
 
 
 # def save_post(request):

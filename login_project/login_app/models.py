@@ -6,7 +6,7 @@ class UserModel(models.Model):
     password = models.CharField(max_length=100)
 
 
-class PostModel(models.Model):
+class NewsModel(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     author = models.CharField(max_length=255)
