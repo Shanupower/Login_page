@@ -80,11 +80,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'user',
-        'CLIENT': {
-            'host': 'localhost',
-            'port': 27017,
-           
-        }
+        'HOST': 'mongodb://root:root@localhost/dummy?retryWrites=true&w=majority',
+        'USER': 'root',
+        'PASSWORD': 'root'
+        # 'CLIENT': {
+            # 'host': 'localhost',
+            # 'port': 27017,
+        #    'host': 'mongodb://<root>:<root>@localhost:27017/dummy?retryWrites=true&w=majority'
+        #    ''
+        # }
     }
 }
 
