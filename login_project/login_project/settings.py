@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'login_app'
 ]
 
+AUTH_USER_MODEL = 'login_app.User'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -76,19 +78,26 @@ WSGI_APPLICATION = 'login_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'user',
+#         'HOST': 'mongodb://root:root@localhost/dummy?retryWrites=true&w=majority',
+#         'USER': 'root',
+#         'PASSWORD': 'root'
+#         # 'CLIENT': {
+#             # 'host': 'localhost',
+#             # 'port': 27017,
+#         #    'host': 'mongodb://<root>:<root>@localhost:27017/dummy?retryWrites=true&w=majority'
+#         #    ''
+#         # }
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'user',
-        'HOST': 'mongodb://root:root@localhost/dummy?retryWrites=true&w=majority',
-        'USER': 'root',
-        'PASSWORD': 'root'
-        # 'CLIENT': {
-            # 'host': 'localhost',
-            # 'port': 27017,
-        #    'host': 'mongodb://<root>:<root>@localhost:27017/dummy?retryWrites=true&w=majority'
-        #    ''
-        # }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

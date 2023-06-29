@@ -1,5 +1,6 @@
 from django import forms
-from .models import UserModel, NewsModel
+from django.contrib.auth.forms import UserCreationForm
+from .models import User, NewsModel, UserModel
 
 class UserForm(forms.ModelForm):
     # create meta class
@@ -16,6 +17,22 @@ class UserForm(forms.ModelForm):
         ]
     # username = forms.CharField(max_length=100)
     # password = forms.CharField(max_length=100, widget=forms.PasswordInput)
+
+
+class RegistrationForm(UserCreationForm):
+	email = forms.EmailField(max_length=254, help_text='Required. Add a valid email address.')
+
+	class Meta:
+		model = User
+		fields = ('email','first_name','last_name', 'password1', 'password2', )
+
+	def clean_email(self):
+		email = self.cleaned_data['email'].lower()
+		try:
+			account = User.objects.exclude(pk=self.instance.pk).get(email=email)
+		except User.DoesNotExist:
+			return email
+		raise forms.ValidationError('Email:%s is already in use.' % account.email)
 
 class NewsForm(forms.ModelForm):
     # create meta class
